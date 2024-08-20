@@ -1,4 +1,4 @@
-from . import arg_parser, image_extractor, url_processor
+from . import arg_parser, image_extractor, result_printer, url_processor
 
 __project_name__ = "aqualuxury"
 
@@ -7,11 +7,9 @@ def main() -> int:
     args = arg_parser.parse_arguments()
     extractor = image_extractor.ImageExtractor()
     processor = url_processor.URLProcessor(extractor)
+    printer = result_printer.ResultPrinter()
 
-    for url in args.urls:
-        result = processor.process(url)
-        print(url)
-        print(result)
-        print()
+    results = [(url, processor.process(url)) for url in args.urls]
+    printer.print_results(results)
 
     return 0
