@@ -9,7 +9,8 @@ def main() -> int:
     processor = url_processor.URLProcessor(extractor)
     printer = result_printer.ResultPrinter()
 
-    results = [(url, processor.process(url)) for url in args.urls]
+    unique_urls = list(dict.fromkeys(args.urls))
+    results = [(url, processor.process(url)) for url in unique_urls]
     printer.print_results(results)
 
     return 0
