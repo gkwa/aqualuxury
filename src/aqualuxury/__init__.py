@@ -1,14 +1,12 @@
-from .arg_parser import parse_arguments
-from .image_extractor import ImageExtractor
-from .url_processor import URLProcessor
+from . import arg_parser, image_extractor, url_processor
 
 __project_name__ = "aqualuxury"
 
 
 def main() -> int:
-    args = parse_arguments()
-    extractor = ImageExtractor()
-    processor = URLProcessor(extractor)
+    args = arg_parser.parse_arguments()
+    extractor = image_extractor.ImageExtractor()
+    processor = url_processor.URLProcessor(extractor)
 
     for url in args.urls:
         result = processor.process(url)
