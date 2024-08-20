@@ -1,5 +1,6 @@
 import sys
 
-import aqualuxury
+from aqualuxury import main
 
-sys.exit(aqualuxury.main())
+if __name__ == "__main__":
+    sys.exit(main())
